@@ -1,0 +1,7 @@
+[package]
+name = "stuff"
+version = "0.1.0"
+authors = ["Casey Tucker <dctucker@hotmail.com>"]
+
+[dependencies]
+hound = "3.4.0"
