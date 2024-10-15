@@ -1,6 +1,7 @@
 extern crate hound;
 use std::i16;
 use std::env;
+use std::process;
 use std::cmp::{min,max};
 
 fn block_char(i:i8, inv:i8) -> String {
@@ -28,8 +29,18 @@ fn main() {
 	let mut grid = vec![ vec![]; HEIGHT as usize ];
 
 	let args: Vec<String> = env::args().collect();
+    if args.len() < 2 {
+        eprintln!("Usage: audio-cat <filename>");
+        return
+    }
 	let path = &args[1];
-	let mut reader = hound::WavReader::open(path).unwrap();
+	let mut reader = match hound::WavReader::open(path) {
+		Ok(value) => value,
+		Err(e) => {
+			eprintln!("{}", e);
+			process::exit(1)
+		},
+	};
 	let mut max_samp = 0.0;
 	let mut min_samp = 0.0;
 	let mut i = 0;

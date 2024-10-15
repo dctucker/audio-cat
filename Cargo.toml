@@ -2,6 +2,7 @@
 name = "audio-cat"
 version = "0.1.0"
 authors = ["Casey Tucker <dctucker@hotmail.com>"]
+edition = "2021"
 
 [dependencies]
-hound = "3.4.0"
+hound = "3.5.1"
